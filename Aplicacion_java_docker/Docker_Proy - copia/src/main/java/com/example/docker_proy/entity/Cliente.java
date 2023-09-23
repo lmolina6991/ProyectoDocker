@@ -25,6 +25,8 @@ public class Cliente {
     private Integer telefono;
     @Column(name = "Persona_Contacto")
     private String personaContacto;
-    ssss
+
+    @OneToMany(mappedBy = "cliente")
+    private List<OrdenCompra> ordenesCompra;
 
 }
