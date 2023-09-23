@@ -27,4 +27,13 @@ public class OrdenCompra {
     @Column(name = "Cliente")
     private Long cliente;
 
+    // Relación muchos a uno con Cliente
+    @ManyToOne
+    @JoinColumn(name = "Cliente", referencedColumnName = "Id_Cliente")
+    private Cliente cliente;
+
+    // Relación uno a muchos con DetalleCompra (inversa)
+    @OneToMany(mappedBy = "ordenCompra")
+    private List<DetalleCompra> detallesCompra;
+
 }
