@@ -25,4 +25,11 @@ public class Maquina {
     @Column(name = "Fecha_Compra")
     private Date fechaCompra;
 
+    @OneToMany(mappedBy = "maquina")
+    private List<Producto> productos;
+
+    // Relación uno a muchos con AsignacionMaquina
+    @OneToMany(mappedBy = "maquina")
+    private List<AsignacionMaquina> asignacionesMaquinas;
+
 }
