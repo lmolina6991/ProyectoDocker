@@ -19,5 +19,7 @@ public class Material {
     private Long id;
     @Column(name = "Nombre")
     private String nombre;
+    @OneToMany(mappedBy = "material")
+    private List<Producto> productos;
 }
 
