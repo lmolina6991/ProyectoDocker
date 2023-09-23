@@ -1,0 +1,8 @@
+com\example\docker_proy\entity\Material.class
+com\example\docker_proy\entity\Maquina.class
+com\example\docker_proy\entity\DetalleCompra.class
+com\example\docker_proy\entity\OrdenCompra.class
+com\example\docker_proy\entity\Trabajador.class
+com\example\docker_proy\DockerProyApplication.class
+com\example\docker_proy\entity\Producto.class
+com\example\docker_proy\entity\Cliente.class
