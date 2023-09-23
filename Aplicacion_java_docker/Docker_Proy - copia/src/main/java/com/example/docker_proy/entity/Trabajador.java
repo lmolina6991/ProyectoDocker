@@ -23,5 +23,8 @@ public class Trabajador {
     @Column(name = "Direccion")
     private String direccion;
 
+    @OneToMany(mappedBy = "trabajador")
+    private List<AsignacionMaquina> asignacionesMaquinas;
+
 }
 
