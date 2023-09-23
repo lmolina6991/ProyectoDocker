@@ -20,4 +20,12 @@ public class AsignacionMaquina {
     @Column(name = "Id_Trabajador")
     private Long idTrabajador;
 
+    @ManyToOne
+    @JoinColumn(name = "Num_Serie", referencedColumnName = "Num_Serie_Maq")
+    private Maquina maquina;
+    
+    @ManyToOne
+    @JoinColumn(name = "Id_Trabajador")
+    private Trabajador trabajador;
+
 }
