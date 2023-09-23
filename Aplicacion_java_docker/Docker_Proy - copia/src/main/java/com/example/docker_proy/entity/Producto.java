@@ -26,4 +26,18 @@ public class Producto {
     @Column(name = "Num_Serie")
     private String numSerie;
 
+     // Relación muchos a uno con Material
+    @ManyToOne
+    @JoinColumn(name = "Material", referencedColumnName = "Id_Material")
+    private Material materials;
+
+    // Relación muchos a uno con Maquina
+    @ManyToOne
+    @JoinColumn(name = "Num_Serie", referencedColumnName = "Num_Serie_Maq")
+    private Maquina maquina;
+
+    // Relación uno a muchos con DetalleCompra
+    @OneToMany(mappedBy = "producto")
+    private List<DetalleCompra> detallesCompra;
+
 }
