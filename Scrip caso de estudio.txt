@@ -1,0 +1,68 @@
+DROP database DOCKER;
+CREATE database DOCKER;
+USE DOCKER;
+
+CREATE TABLE MATERIAL (
+    Id_Material INT PRIMARY KEY NOT NULL,
+    Nombre VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE MAQUINA (
+    Num_Serie_Maq VARCHAR(100) NOT NULL PRIMARY KEY,
+    Marca VARCHAR(100) NOT NULL,
+    Modelo VARCHAR(100) NOT NULL,
+    Fecha_Compra DATE NOT NULL
+);
+
+CREATE TABLE PRODUCTO (
+    Id_Producto INT PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    Descripcion VARCHAR(300) NOT NULL,
+    Tipo_Producto VARCHAR(100) NOT NULL,
+    Material INT,
+    Num_Serie VARCHAR(100), -- Cambié INT a VARCHAR(100)
+    FOREIGN KEY (Material) REFERENCES MATERIAL(Id_Material),
+    FOREIGN KEY (Num_Serie) REFERENCES MAQUINA(Num_Serie_Maq)
+);
+CREATE TABLE CLIENTE (
+    Id_Cliente INT NOT NULL PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    Direccion VARCHAR(100) NOT NULL,
+    Telefono INT NOT NULL,
+    Persona_Contacto VARCHAR(200)
+);
+
+CREATE TABLE TRABAJADOR (
+    Id_Trabajador INT NOT NULL PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    Fecha_Nacimiento DATE NOT NULL,
+    Direccion VARCHAR(100) NOT NULL
+);
+CREATE TABLE ORDEN_COMPRA (
+    Id_Orden INT NOT NULL PRIMARY KEY,
+    Fecha_Realizacion DATE NOT NULL,
+    Fecha_Entrega_Esperada DATE NOT NULL,
+    Fecha_Entrega_Real DATE,
+    Cliente INT NOT NULL,
+    FOREIGN KEY (Cliente) REFERENCES CLIENTE(Id_Cliente)
+);
+
+CREATE TABLE DETALLE_COMPRA (
+    Id_Detalle INT NOT NULL PRIMARY KEY,
+    Id_Orden INT NOT NULL,
+    Id_Producto INT NOT NULL,
+    Cantidad INT NOT NULL,
+    Precio DECIMAL NOT NULL,
+    FOREIGN KEY (Id_Orden) REFERENCES ORDEN_COMPRA(Id_Orden),
+    FOREIGN KEY (Id_Producto) REFERENCES PRODUCTO(Id_Producto)
+);
+
+
+CREATE TABLE ASIGNACION_MAQUINA (
+    Id_Asignacion_Maquina INT NOT NULL PRIMARY KEY,
+    Num_Serie VARCHAR(100) NOT NULL,
+    Id_Trabajador INT NOT NULL,
+    FOREIGN KEY (Num_Serie) REFERENCES MAQUINA(Num_Serie_Maq),
+    FOREIGN KEY (Id_Trabajador) REFERENCES TRABAJADOR(Id_Trabajador)
+);
+
