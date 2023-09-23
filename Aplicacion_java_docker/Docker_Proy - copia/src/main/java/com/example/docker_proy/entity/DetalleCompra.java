@@ -25,4 +25,14 @@ public class DetalleCompra {
     @Column(name = "Precio")
     private BigDecimal precio;
 
+    // Relación muchos a uno con Producto
+    @ManyToOne
+    @JoinColumn(name = "Id_Producto", referencedColumnName = "id)
+    private Producto producto;
+
+    // Relación muchos a uno con OrdenCompra
+    @ManyToOne
+    @JoinColumn(name = "Id_Orden", referencedColumnName = "id)
+    private OrdenCompra ordenCompra;
+
 }
